@@ -72,3 +72,18 @@ export type PostData = {
   updated_at: string;
   cover: PostCover;
 };
+
+export type PostMeta = {
+  pagination: {
+    page: number,
+    pageSize: number,
+    pageCount: number,
+    total: number
+  }
+};
+
+export type Props = {
+  params: {
+    slug: string;
+  };
+};
