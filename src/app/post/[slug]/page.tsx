@@ -1,3 +1,4 @@
+import { Post } from "@/containers/Post";
 import { getAllPosts } from "@/data/posts/get-all-posts";
 import { getPost } from "@/data/posts/get-post";
 import { getTotalPosts } from "@/data/posts/get-total-post";
@@ -9,10 +10,7 @@ export default async function DynamicPost({ params }: Props) {
   const post = await getOnePost(slug);
 
   return (
-    <>
-      <p>{post.title}</p>
-      <p dangerouslySetInnerHTML={{__html: post.content}} />
-    </>
+    <Post post={post} />
   );
 }
 
