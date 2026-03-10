@@ -1,3 +1,4 @@
+import { Comments } from "@/Comments";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Heading } from "@/components/Heading";
@@ -18,9 +19,10 @@ export const Post = ({ post }: PostProps) => {
 
       <MainContainer>
         <Heading>{post.title}</Heading>
-        <PostCover coverUrl={post.cover.formats.large.url} alt={post.title}/>
+        <PostCover coverUrl={post.cover.formats.small.url} alt={post.title}/>
         <PostDetails author={post.author.name} category={post.category.name} date={post.createdAt} />
         <PostContainer content={post.content} />
+        <Comments title={post.title} slug={post.slug} />
       </MainContainer>
 
       <Footer />
