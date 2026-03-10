@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "deploy:static": "next build"
+    "lint": "eslint"
   },
   "dependencies": {
     "disqus-react": "^1.1.7",
