@@ -4,14 +4,14 @@ import { getPost } from "@/data/posts/get-post";
 import { getTotalPosts } from "@/data/posts/get-total-post";
 import { Props } from "@/domain/posts/post";
 import { notFound } from "next/navigation";
+import { SITE_NAME } from "@/config/app-config";
+import { removeHtml } from "@/utils/remove-html";
 
 export default async function DynamicPost({ params }: Props) {
   const { slug } = await params;
   const post = await getOnePost(slug);
 
-  return (
-    <Post post={post} />
-  );
+  return <Post post={post} />;
 }
 
 export async function generateStaticParams() {
@@ -38,3 +38,14 @@ export const getOnePost = async (slug: string) => {
 
   return post;
 };
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+
+  const post = await getOnePost(slug);
+
+  return {
+    title: `${post.title} - ${SITE_NAME}`,
+    description: removeHtml(post.content).slice(0, 150),
+  };
+}
